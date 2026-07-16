@@ -1,0 +1,13 @@
+{
+  "name": "legend-hall",
+  "private": true,
+  "packageManager": "pnpm@10.12.1",
+  "scripts": {
+    "dev": "pnpm --parallel --filter @legend/web --filter @legend/proxy dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "format": "prettier --write ."
+  },
+  "devDependencies": { "prettier": "^3.5.3", "typescript": "^5.8.3" }
+}

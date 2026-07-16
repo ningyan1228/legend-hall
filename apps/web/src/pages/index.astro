@@ -1,0 +1,4 @@
+---
+import Base from '../layouts/Base.astro'; import Explorer from '../components/Explorer'; import {getPeople} from '../data/people'; const people=await getPeople();
+---
+<Base title="星耀展馆｜记录跨越时代的传奇" description="探索足球、篮球、影视与音乐领域传奇人物的生平、荣誉和时间线。"><section class="hero"><span class="eyebrow">A DIGITAL ARCHIVE OF GREATNESS</span><h1>每个时代，都有<br/><em>照亮世界</em>的人</h1><p>在这里，成就不只是数字。我们记录那些改变比赛、银幕与声音的人，以及他们留下的时代回响。</p><a class="cta" href="#legends">开始探索</a></section><section id="legends" class="content"><div class="section-title"><div><span class="eyebrow">CURATED LEGENDS</span><h2>传奇人物</h2></div><p>{people.length} 位人物 · 持续更新</p></div><Explorer client:load people={people} base={import.meta.env.BASE_URL}/></section></Base>

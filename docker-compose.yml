@@ -1,0 +1,29 @@
+services:
+  legend-hall-proxy:
+    build:
+      context: .
+      dockerfile: apps/proxy/Dockerfile
+    container_name: legend-hall-proxy
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      PORT: 3000
+      HOST: 0.0.0.0
+      VIRTUAL_HOST: legend-hall-api.gjsx.uno
+      LETSENCRYPT_HOST: legend-hall-api.gjsx.uno
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL:?Set LETSENCRYPT_EMAIL in .env}
+    expose:
+      - "3000"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
