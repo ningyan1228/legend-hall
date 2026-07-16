@@ -14,7 +14,7 @@ const halls = [
 ---
 <Base title="星耀展馆｜黑曜石数字名人堂" description="探索足球传奇、周星驰与薛之谦的人物生平、荣誉和时间线。" image={heroImage}>
   <section class="museum-hero">
-    <div class="hero-no">10</div><div class="hero-grain"></div><img src={heroImage} alt="梅西举起巴塞罗那十号球衣"/>
+    <div class="hero-no">10</div><div class="hero-grain"></div><img class="hero-messi-image" src={heroImage} alt="梅西举起巴塞罗那十号球衣"/>
     <div class="hero-copy"><span>LEGEND 001</span><h1>LIONEL<br/><em>MESSI</em></h1><h2>里奥内尔·梅西</h2><div class="hero-meta"><b>1987 — PRESENT</b><b>ARGENTINA · FOOTBALL</b></div><div class="hero-honors">8 × BALLON D’OR<br/>WORLD CUP CHAMPION</div><div class="hero-actions"><a href={`${base}people/lionel-messi/`}>进入人物档案</a><a class="ghost" href="#gallery">浏览全部传奇</a></div></div>
     <div class="scroll-note">SCROLL TO ENTER <i></i></div>
   </section>
@@ -24,5 +24,10 @@ const halls = [
   <section id="eras" class="era-section section-shell"><div class="section-kicker">A CENTURY OF GREATNESS / 时代时间轴</div><div class="era-years"><b>1940s</b><b>1960s</b><b>1980s</b><b>2000s</b><b>2020s</b></div><div class="era-events"><article><time>1958</time><h3>贝利第一次世界杯夺冠</h3></article><article><time>1986</time><h3>马拉多纳封神之夏</h3></article><article><time>2009</time><h3>梅西首次获得金球奖</h3></article><article><time>2022</time><h3>阿根廷重返世界之巅</h3></article></div></section>
   <section class="statistics-wall"><div><b>8</b><span>LEGENDS<br/>ARCHIVED</span></div><div><b>3</b><span>THEMED<br/>HALLS</span></div><div><b>6</b><span>FOOTBALL<br/>ICONS</span></div><div><b>24H</b><span>NEWS<br/>UPDATES</span></div></section>
   <section id="news" class="news-editorial section-shell"><div class="section-heading"><div><span>FIELD NOTES / 最新动态</span><h2>展馆日志</h2></div></div><div class="news-lead"><div><span>DEMO ARCHIVE NOTE</span><h3>新的传奇档案正在持续入馆</h3><p>当前展馆聚焦足球传奇，并收录周星驰与薛之谦两位娱乐人物。接入真实新闻 API 后，最新比赛、作品与人物动态将在此处实时更新。</p></div><time>2026<br/>07.17</time></div></section>
-  <style>.category-halls-three{grid-template-columns:repeat(3,1fr)}</style>
+  <style>
+    .category-halls-three{grid-template-columns:repeat(3,1fr)}
+    .museum-hero > .hero-messi-image{object-position:center 55%}
+    @media(max-width:900px){.museum-hero > .hero-messi-image{object-position:center 48%}}
+    @media(max-width:560px){.museum-hero > .hero-messi-image{object-position:center 44%}}
+  </style>
 </Base>
