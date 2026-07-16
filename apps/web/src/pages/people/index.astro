@@ -1,4 +1,4 @@
 ---
 import Base from '../../layouts/Base.astro'; import Explorer from '../../components/Explorer'; import {getPeople} from '../../data/people'; const people=await getPeople();
 ---
-<Base title="人物展馆｜星耀展馆" description="浏览足球、篮球、影视和音乐传奇人物档案。"><section class="content page-head"><span class="eyebrow">THE ARCHIVE</span><h1>人物展馆</h1><p>按领域筛选，进入每一位传奇的完整档案。</p></section><section class="content"><Explorer client:load people={people} base={import.meta.env.BASE_URL}/></section></Base>
+<Base title="人物档案｜星耀展馆" description="浏览足球、篮球、影视和音乐传奇人物档案。"><section class="archive-hero section-shell"><span>ARCHIVE INDEX / 001—016</span><h1>传奇人物<br/><em>档案</em></h1><p>16 位被时代记住的人。<br/>按照领域、国家与年代探索他们的故事。</p></section><section class="section-shell archive-body"><Explorer client:load people={people} base={import.meta.env.BASE_URL}/></section></Base>
