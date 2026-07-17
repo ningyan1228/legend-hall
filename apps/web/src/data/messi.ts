@@ -25,4 +25,6 @@ export const sources = [
   { label: 'UEFA：梅西纪录与欧冠履历', url: 'https://www.uefa.com/uefachampionsleague/news/0242-0e97e0ac1cb3-eef786ff788c-1000--lionel-messi-s-record-collection/' },
   { label: 'FC Barcelona：俱乐部生涯档案', url: 'https://www.fcbarcelona.com/en/football/first-team/players/4974/leo-messi' },
   { label: 'Inter Miami CF：球员与俱乐部资料', url: 'https://www.intermiamicf.com/' },
+  { label: 'Inter Miami CF：梅西100场、86球与55次助攻里程碑', url: 'https://www.intermiamicf.com/news/leo-messi-reaches-100-appearances-for-inter-miami-cf' },
+  { label: '阿根廷足协：国家队出场与进球里程碑', url: 'https://www.afa.com.ar/es/posts/messi-sigue-haciendo-historia-llego-a-117-goles-y-se-convirtio-en-el-goleador-mas-longevo-de-la-seleccion' },
 ];
