@@ -25,7 +25,11 @@ const querySchema = z.object({
 
 export async function buildApp() {
   const app = Fastify({ logger: { level: process.env.LOG_LEVEL ?? 'info' }, bodyLimit: 64 * 1024 });
-  await app.register(helmet);
+  await app.register(helmet, {
+    // GitHub Pages loads images from this API and follows media redirects.
+    // `same-origin` would make the browser block those cross-origin images.
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+  });
   await app.register(cors, {
     origin: (origin, callback) => {
       const allowed = (process.env.ALLOWED_ORIGINS ?? 'http://localhost:4321').split(',');
