@@ -1,4 +1,5 @@
 import type { Person } from '@legend/shared';
+import { apiUrl, mediaUrl } from './media';
 
 const avatarPath = (slug: string) => `/images/people/${slug}/avatar.jpg`;
 const person = (
@@ -59,16 +60,22 @@ const curatedSlugs = fallbackPeople.map(({ slug }) => slug);
 
 export async function getPeople() {
   try {
-    const base = import.meta.env.PUBLIC_API_BASE_URL;
-    if (!base) return fallbackPeople;
-    const response = await fetch(`${base}/people`, { signal: AbortSignal.timeout(8000) });
+    const endpoint = apiUrl('people');
+    if (!endpoint) return fallbackPeople;
+    const response = await fetch(endpoint, { signal: AbortSignal.timeout(8000) });
     if (!response.ok) throw new Error('People API unavailable');
     const apiPeople = (await response.json()).data as Person[];
     const apiBySlug = new Map(apiPeople.map((item) => [item.slug, item]));
     return curatedSlugs.map((slug) => {
       const fallback = fallbackPeople.find((item) => item.slug === slug)!;
       const remote = apiBySlug.get(slug);
-      return { ...fallback, views: remote?.views ?? fallback.views, avatarUrl: avatarPath(slug) };
+      return {
+        ...fallback,
+        ...(remote ?? {}),
+        views: remote?.views ?? fallback.views,
+        avatarUrl: mediaUrl(`people/${slug}/card`, avatarPath(slug)),
+        coverUrl: mediaUrl(`people/${slug}/hero`, avatarPath(slug)),
+      };
     });
   } catch {
     return fallbackPeople;
