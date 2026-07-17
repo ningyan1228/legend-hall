@@ -22,7 +22,9 @@ export default function Explorer({ people, base, compact = false }: { people: Pe
     setSaved(next);
     localStorage.setItem('legend-favorites', JSON.stringify(next.map((item) => ({ slug: item, savedAt: new Date().toISOString() }))));
   };
-  const image = (item: Person) => `${basePath}${item.avatarUrl.replace(/^\/+/, '')}`;
+  const image = (item: Person) => /^https?:\/\//i.test(item.avatarUrl)
+    ? item.avatarUrl
+    : `${basePath}${item.avatarUrl.replace(/^\/+/, '')}`;
 
   return <section className={compact ? 'explorer compact' : 'explorer'}>
     <div className="archive-tools">
