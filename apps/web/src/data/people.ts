@@ -73,8 +73,8 @@ export async function getPeople() {
         ...fallback,
         ...(remote ?? {}),
         views: remote?.views ?? fallback.views,
-        avatarUrl: mediaUrl(`people/${slug}/card`, avatarPath(slug)),
-        coverUrl: mediaUrl(`people/${slug}/hero`, avatarPath(slug)),
+        avatarUrl: remote ? mediaUrl(`people/${slug}/card`, avatarPath(slug)) : avatarPath(slug),
+        coverUrl: remote ? mediaUrl(`people/${slug}/hero`, avatarPath(slug)) : avatarPath(slug),
       };
     });
   } catch {
