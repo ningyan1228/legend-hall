@@ -14,6 +14,7 @@ const profile = profiles[person.slug];
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 const avatarUrl = `${base}${person.avatarUrl.replace(/^\/+/, '')}`;
+const childhoodUrl = `${base}images/people/${person.slug}/childhood.png`;
 const url = new URL(Astro.url.pathname, Astro.site);
 const archiveNumber = String(Object.keys(profiles).indexOf(person.slug) + 1).padStart(2, '0');
 const number = person.slug === 'lionel-messi' ? '10' : archiveNumber;
@@ -25,10 +26,10 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Person', name: pers
   <section class="person-hero"><div class="person-number">{number}</div><img src={avatarUrl} alt={`${person.nameZh}人物照片`}/><div class="person-hero-copy"><span>LEGEND ARCHIVE / {person.category}</span><h1>{person.nameEn}</h1><h2>{person.nameZh}</h2><div><b>{person.birthDate.slice(0,4)} — {person.status === 'deceased' ? 'LEGACY' : 'PRESENT'}</b><b>{person.nationality} · {categoryLabels[person.category]}</b></div></div><a href="#prologue" class="scroll-note">EXPLORE THE ARCHIVE <i></i></a></section>
   <section id="prologue" class="prologue section-shell"><span>PROLOGUE / 人物序章</span><blockquote>{profile.quote}</blockquote><p>{person.biography}</p></section>
   <section class="key-numbers">{profile.numbers.map(([value, label]) => <div><b>{value}</b><span>{label}</span></div>)}</section>
-  <section class="career-story section-shell"><div class="section-kicker">CAREER TIMELINE / 生涯时间线</div><div class="career-line">{profile.timeline.map(([year, event], index) => <article><b>{year}</b><div>{index === 0 && <img src={avatarUrl} alt={`${person.nameZh}档案照片`}/>}<span>{event}</span></div></article>)}</div></section>
+  <section class="career-story section-shell"><div class="section-kicker">CAREER TIMELINE / 生涯时间线</div><div class="career-line">{profile.timeline.map(([year, event], index) => <article><b>{year}</b><div>{index === 0 && <img class="childhood-photo" src={childhoodUrl} alt={`${person.nameZh}幼年照片`}/>}<span>{event}</span></div></article>)}</div></section>
   <section class="honor-showcase section-shell"><div><span>THE TROPHY ROOM</span><h2>荣誉陈列馆</h2></div><div class="honor-rail">{profile.honors.map(([value, title, description]) => <article><b>{value}</b><h3>{title}</h3><p>{description}</p></article>)}</div></section>
   <section class="classic-moment section-shell"><div class="section-kicker">DEFINING MOMENT / 经典事件</div><blockquote>{profile.classicMoment}</blockquote></section>
   <section class="profile-facts section-shell"><div><span>ARCHIVE DATA</span><h2>人物档案</h2></div><dl><dt>出生日期</dt><dd>{person.birthDate}</dd><dt>出生地</dt><dd>{person.birthPlace}</dd>{person.deathDate && <><dt>逝世日期</dt><dd>{person.deathDate}</dd></>}<dt>国籍 / 地区</dt><dd>{person.nationality}</dd><dt>领域</dt><dd>{categoryLabels[person.category]}</dd><dt>状态</dt><dd>{statusLabels[person.status]}</dd></dl></section>
   <section class="person-news section-shell"><span>ARCHIVE NOTE / 档案说明</span><h2>影响仍在继续</h2><p>{person.summary}</p></section>
-  <style>.classic-moment{border-block:1px solid var(--line)}.classic-moment blockquote{max-width:1100px;margin:55px 0 0;font:600 clamp(34px,5vw,76px)/1.45 var(--serif);color:var(--silver)}</style>
+  <style>.career-line img.childhood-photo{width:260px;height:220px;object-fit:contain;object-position:center;background:var(--surface);filter:grayscale(.25)}.classic-moment{border-block:1px solid var(--line)}.classic-moment blockquote{max-width:1100px;margin:55px 0 0;font:600 clamp(34px,5vw,76px)/1.45 var(--serif);color:var(--silver)}@media(max-width:560px){.career-line img.childhood-photo{display:block;width:100%;height:320px;margin-bottom:22px}.career-line article>div{display:block}}</style>
 </Base>

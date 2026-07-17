@@ -14,3 +14,5 @@ https://commons.wikimedia.org/wiki/File:薛之谦_贵阳爱未来城市音乐节
 檀健次图片来自爱奇艺公开演员资料页：https://www.iq.com/actor-info/jc-t-214636505
 
 阿娇图片来自中文 Wikipedia 页面所引用的 Wikimedia 文件：https://zh.wikipedia.org/wiki/鍾欣潼
+
+各人物幼年照片由项目维护者提供，本站仅用于对应人物档案的生涯时间线展示。
